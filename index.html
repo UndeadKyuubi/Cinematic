@@ -12,7 +12,80 @@
                 super('logo');
             }
             create() {
-                this.add.text(10,10,"Logo Scene");
+                let ratLogo = this.add.image(400, 300, 'KingRat');
+                ratLogo.setScale(0);
+                let ratText = this.add.image(-100, 300, 'RatFont');
+                ratText.setScale(2);
+                let kingText = this.add.image(900, 300, 'KingFont');
+                kingText.setScale(2);
+                let studioText = this.add.image(400, 700, 'StudioFont');
+                studioText.setScale(2);
+
+                this.tweens.add({
+                    targets: ratLogo,
+                    scaleX: 0.35,
+                    scaleY: 0.35,
+                    duration: 1000
+                });
+
+                this.time.delayedCall(1000 * 0, () => {
+                    this.tweens.add({
+                    targets: ratLogo,
+                    angle: 90,
+                    duration: 250,
+                    });
+                });
+
+                this.time.delayedCall(1000 * 0.25, () => {
+                    this.tweens.add({
+                    targets: ratLogo,
+                    angle: 180,
+                    duration: 250,
+                    });
+                });
+
+                this.time.delayedCall(1000 * 0.5, () => {
+                    this.tweens.add({
+                    targets: ratLogo,
+                    angle: 270,
+                    duration: 250,
+                    });
+                });
+
+                this.time.delayedCall(1000 * 0.75, () => {
+                    this.tweens.add({
+                    targets: ratLogo,
+                    angle: 0,
+                    duration: 250,
+                    });
+                });
+
+                this.time.delayedCall(1000 * 1, () => {
+                    this.tweens.add({
+                        targets: ratText,
+                        x: 150,
+                        ease: 'Sine.easeInOut',
+                        duration: 1000
+                    });
+                });
+
+                this.time.delayedCall(1000 * 2, () => {
+                    this.tweens.add({
+                        targets: kingText,
+                        x: 650,
+                        ease: 'Sine.easeInOut',
+                        duration: 1000
+                    });
+                });
+
+                this.time.delayedCall(1000 * 3, () => {
+                    this.tweens.add({
+                        targets: studioText,
+                        y: 450,
+                        ease: 'Sine.easeInOut',
+                        duration: 1000
+                    });
+                });
 
                 const FKey = this.input.keyboard.addKey('F');
 
@@ -31,14 +104,18 @@
                 }, this);
 
                 this.time.delayedCall(1000 * 5, () => {
+                    this.cameras.main.fadeOut(3000);
+                });
+
+                this.time.delayedCall(1000 * 8, () => {
                         this.scene.start('loadscreen');
-                    });
+                });
             }
             preload() {
                 this.load.image('KingFont', 'Assets/Images/KingFont.png');
                 this.load.image('RatFont', 'Assets/Images/RatFont.png');
                 this.load.image('KingRat', 'Assets/Images/KingRat.png');
-                this.load.image('KingFont', 'Assets/Images/KingFont.png');
+                this.load.image('StudioFont', 'Assets/Images/StudioFont.png');
             }
         }
 
@@ -47,6 +124,8 @@
                 super('loadscreen');
             }
             create() {
+                this.cameras.main.fadeIn(3000);
+
                 this.add.text(10,10,"Loading Scene");
 
                 const FKey = this.input.keyboard.addKey('F');
@@ -115,6 +194,7 @@
                 width: 800,
                 height: 600
             },
+            backgroundColor: '#ffffff',
             scene: [ Logo, loadScreen, mainMenu ]
         };
 
