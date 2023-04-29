@@ -35,7 +35,10 @@
                     });
             }
             preload() {
-                
+                this.load.image('KingFont', 'Assets/Images/KingFont.png');
+                this.load.image('RatFont', 'Assets/Images/RatFont.png');
+                this.load.image('KingRat', 'Assets/Images/KingRat.png');
+                this.load.image('KingFont', 'Assets/Images/KingFont.png');
             }
         }
 
@@ -67,7 +70,8 @@
                 });
             }
             preload() {
-                
+                this.load.image('ratminion', 'Assets/Images/ratminion.png');
+                this.load.image('cheese', 'Assets/Images/cheese.png');
             }
         }
 
@@ -95,7 +99,10 @@
                 }, this);
             }
             preload() {
-                
+                this.load.audio('BGM', 'Assets/Audio/BGM.wav');
+                this.load.audio('MenuBeep', 'Assets/Audio/MenuBlips.wav');
+                this.load.image('sewage', 'Assets/Images/sewage.png');
+                this.load.image('ratminion', 'Assets/Images/ratminion.png');
             }
         }
 
@@ -111,12 +118,6 @@
             scene: [ Logo, loadScreen, mainMenu ]
         };
 
-        /*new Phaser.Game({
-            mode: Phaser.Scale.FIT,
-            width: 640,
-            height: 480,
-            scene: [Logo, loadScreen, mainMenu],
-        });*/
         const game = new Phaser.Game(config);
     </script>
 </head>
