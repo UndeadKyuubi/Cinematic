@@ -13,9 +13,26 @@
             }
             create() {
                 this.add.text(10,10,"Logo Scene");
+
+                const FKey = this.input.keyboard.addKey('F');
+
+                FKey.on('down', function ()
+                {
+
+                if (this.scale.isFullscreen)
+                {
+                    this.scale.stopFullscreen();
+                }
+                else
+                {
+                    this.scale.startFullscreen();
+                }
+
+                }, this);
+
                 this.time.delayedCall(1000 * 5, () => {
-                    this.scene.start('loadscreen');
-                });
+                        this.scene.start('loadscreen');
+                    });
             }
             preload() {
                 
@@ -28,6 +45,23 @@
             }
             create() {
                 this.add.text(10,10,"Loading Scene");
+
+                const FKey = this.input.keyboard.addKey('F');
+
+                FKey.on('down', function ()
+                {
+
+                if (this.scale.isFullscreen)
+                {
+                    this.scale.stopFullscreen();
+                }
+                else
+                {
+                    this.scale.startFullscreen();
+                }
+
+                }, this);
+
                 this.time.delayedCall(1000 * 5, () => {
                     this.scene.start('mainMenu');
                 });
@@ -43,17 +77,47 @@
             }
             create() {
                 this.add.text(10,10,"Main Menu Scene");
+
+                const FKey = this.input.keyboard.addKey('F');
+
+                FKey.on('down', function ()
+                {
+
+                if (this.scale.isFullscreen)
+                {
+                    this.scale.stopFullscreen();
+                }
+                else
+                {
+                    this.scale.startFullscreen();
+                }
+
+                }, this);
             }
             preload() {
                 
             }
         }
 
-        new Phaser.Game({
+        const config = {
+            type: Phaser.AUTO,
+            scale: {
+                mode: Phaser.Scale.FIT,
+                parent: 'phaser-example',
+                autoCenter: Phaser.Scale.CENTER_BOTH,
+                width: 800,
+                height: 600
+            },
+            scene: [ Logo, loadScreen, mainMenu ]
+        };
+
+        /*new Phaser.Game({
+            mode: Phaser.Scale.FIT,
             width: 640,
             height: 480,
             scene: [Logo, loadScreen, mainMenu],
-        });
+        });*/
+        const game = new Phaser.Game(config);
     </script>
 </head>
 <body>
