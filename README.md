@@ -16,3 +16,5 @@ all sound effects were made by me using free online software
 IMPORTANT!!!
 To hear audio on menu scene you must click somewhere within the browser first, then you will be able to hear the background music
 and the blips when hovering over the menu options
+
+Cinematic also has the option of pressing 'f' at any time to go fullscreen :)
