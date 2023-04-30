@@ -253,8 +253,71 @@
             constructor() {
                 super('mainMenu');
             }
-            create() {
-                this.add.text(10,10,"Main Menu Scene");
+            create() {;
+                var BGM = this.sound.add('BGM');
+                BGM.setLoop(true);
+                BGM.play();
+
+                let title = this.add.text(260,20,"Rodent Quest");
+                title.setFontSize(40);
+                title.setTint(0x000000);
+
+                const playButton = this.add.text(20, 150, "PLAY");
+                playButton.setTint(0x000000);
+                playButton.setFontSize(30);
+
+                const optionButton = this.add.text(20, 250, "OPTIONS");
+                optionButton.setTint(0x000000);
+                optionButton.setFontSize(30);
+
+                const creditButton = this.add.text(20, 350, "CREDITS");
+                creditButton.setTint(0x000000);
+                creditButton.setFontSize(30);
+
+                const quitButton = this.add.text(20, 450, "QUIT");
+                quitButton.setTint(0x000000);
+                quitButton.setFontSize(30);
+
+                playButton.setInteractive();
+                optionButton.setInteractive();
+                creditButton.setInteractive();
+                quitButton.setInteractive();
+
+                let blip = this.sound.add('MenuBeep');
+                let selector = this.add.circle(10, -10, 5, 0x000000);
+
+                playButton.on('pointerover', () => {
+                    blip.play();
+                    selector.y = 163;
+                });
+
+                optionButton.on('pointerover', () => {
+                    blip.play();
+                    selector.y = 263;
+                });
+
+                creditButton.on('pointerover', () => {
+                    blip.play();
+                    selector.y = 363;
+                });
+
+                quitButton.on('pointerover', () => {
+                    blip.play();
+                    selector.y = 463;
+                });
+
+                let rat1 = this.add.image(260, 540, 'ratminion');
+                let rat2 = this.add.image(380, 440, 'ratminion');
+                let rat3 = this.add.image(450, 530, 'ratminion');
+                rat1.setScale(0.35);
+                rat2.setScale(0.35);
+                rat3.setScale(0.35);
+                rat1.setFlip(180, this.y);
+                rat2.setFlip(180, this.y);
+                rat3.setFlip(180, this.y);
+
+                let sewer = this.add.image(675, 455,'sewer');
+                sewer.setScale(0.5);
 
                 const FKey = this.input.keyboard.addKey('F');
 
@@ -275,7 +338,7 @@
             preload() {
                 this.load.audio('BGM', 'Assets/Audio/BGM.wav');
                 this.load.audio('MenuBeep', 'Assets/Audio/MenuBlips.wav');
-                this.load.image('sewage', 'Assets/Images/sewage.png');
+                this.load.image('sewer', 'Assets/Images/sewer.png');
                 this.load.image('ratminion', 'Assets/Images/ratminion.png');
             }
         }
@@ -290,8 +353,7 @@
                 height: 600
             },
             backgroundColor: '#ffffff',
-            //scene: [ Logo, loadScreen, mainMenu ]
-            scene: [loadScreen]
+            scene: [ Logo, loadScreen, mainMenu ]
         };
 
         const game = new Phaser.Game(config);
